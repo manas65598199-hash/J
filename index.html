@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALMONT | Haute Joaillerie</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap');
+
+    :root {
+      --emerald: #041E15;
+      --emerald-dark: #02120D;
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --cream: #FBF9F5;
+      --black: #080A09;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* --- Navigation --- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: linear-gradient(to bottom, rgba(4,30,21,0.9), transparent);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.35em;
+      color: var(--cream);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      margin-left: 2.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.65;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 0.8rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--gold);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+      background: rgba(4, 30, 21, 0.4);
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      background-color: var(--gold);
+      color: var(--black);
+    }
+
+    /* --- Featured Collection Section --- */
+    .featured {
+      padding: 8rem 4rem;
+      background-color: var(--emerald);
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 1rem;
+      color: var(--cream);
+      font-weight: 300;
+    }
+
+    .section-desc {
+      font-size: 0.85rem;
+      color: var(--gold-light);
+      letter-spacing: 0.15em;
+      margin-bottom: 4rem;
+      text-transform: uppercase;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: rgba(8, 10, 9, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 3rem 2rem;
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      margin: 1.5rem 0 0.5rem;
+      font-weight: 400;
+    }
+
+    .card-price {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+    }
+
+    /* --- SECTION 4: Private Atelier & VIP Concierge --- */
+    .atelier-section {
+      padding: 8rem 4rem;
+      background: linear-gradient(180deg, var(--emerald) 0%, var(--emerald-dark) 100%);
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      display: flex;
+      justify-content: center;
+    }
+
+    .atelier-container {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+      background: rgba(8, 10, 9, 0.7);
+      padding: 5rem 3rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .atelier-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .atelier-text {
+      font-size: 0.9rem;
+      color: rgba(251, 249, 245, 0.7);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    .form-group label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(4, 30, 21, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 1rem;
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .submit-btn {
+      grid-column: span 2;
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem;
+      text-align: center;
+      background-color: var(--black);
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: rgba(251, 249, 245, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 1.5rem; }
+      .booking-form { grid-template-columns: 1fr; }
+      .form-group.full-width, .submit-btn { grid-column: span 1; }
+      .hero-title { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">VALMONT</a>
+    <nav>
+      <a href="#high-jewelry">High Jewelry</a>
+      <a href="#collections">Collections</a>
+      <a href="#atelier">Private Atelier</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="http://googleusercontent.com/generated_video_content/14736656747142627614" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+      <p class="hero-subtitle">Haute Joaillerie</p>
+      <h1 class="hero-title">The Serpent & The Diamond</h1>
+      <a href="#collections" class="cta-btn">Discover Creation</a>
+    </div>
+  </section>
+
+  <section class="featured" id="collections">
+    <h2 class="section-title">The Masterpieces</h2>
+    <p class="section-desc">Rare Stones & Handcrafted Perfection</p>
+    
+    <div class="grid">
+      <div class="card">
+        <h3 class="card-title">L'Émeraude Royale Ring</h3>
+        <p class="card-price">$52,000 USD</p>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Serpent D'Or Solitaire</h3>
+        <p class="card-price">$68,000 USD</p>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Albino Viper Cuff</h3>
+        <p class="card-price">$95,000 USD</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="atelier-section" id="atelier">
+    <div class="atelier-container">
+      <h2 class="atelier-title">Private Concierge</h2>
+      <p class="atelier-text">
+        Experience Valmont Haute Joaillerie through a private, one-on-one viewing session with our master jewelers in Place Vendôme or via secure private digital showcase.
+      </p>
+
+      <form class="booking-form" onsubmit="event.preventDefault(); alert('Your viewing request has been received by the Valmont Concierge.');">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Lord / Lady / Mr / Ms" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="concierge@domain.com" required>
+        </div>
+        <div class="form-group">
+          <label>Preferred Consultation</label>
+          <select required>
+            <option value="vendome">Place Vendôme Atelier (Paris)</option>
+            <option value="digital">Private Virtual Salon</option>
+            <option value="residence">In-Residence Private Viewing</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Piece of Interest</label>
+          <input type="text" placeholder="e.g. Albino Viper Series ($50k+)">
+        </div>
+        <div class="form-group full-width">
+          <label>Customization Requirements / Notes</label>
+          <textarea rows="4" placeholder="Detail any specific gemological requests or bespoke commissioning requirements..."></textarea>
+        </div>
+        <button type="submit" class="cta-btn submit-btn">Request Private Appointment</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 VALMONT HAUTE JOAILLERIE. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+</body>
+</html>
