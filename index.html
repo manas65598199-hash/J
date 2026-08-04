@@ -159,7 +159,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 3rem;
       max-width: 1400px;
       margin: 0 auto;
@@ -168,8 +168,9 @@
     .card {
       background-color: rgba(8, 10, 9, 0.6);
       border: 1px solid rgba(212, 175, 55, 0.2);
-      padding: 3rem 2rem;
+      padding: 2rem;
       transition: transform 0.4s ease, border-color 0.4s ease;
+      text-align: center;
     }
 
     .card:hover {
@@ -177,17 +178,45 @@
       border-color: var(--gold);
     }
 
+    .card-img-wrapper {
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.05);
+    }
+
     .card-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.8rem;
-      margin: 1.5rem 0 0.5rem;
+      margin-bottom: 0.5rem;
       font-weight: 400;
+    }
+
+    .card-description {
+      font-size: 0.75rem;
+      color: rgba(251, 249, 245, 0.6);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      height: 40px;
     }
 
     .card-price {
       color: var(--gold);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       letter-spacing: 0.15em;
+      font-weight: 500;
     }
 
     /* --- SECTION 4: Private Atelier & VIP Concierge --- */
@@ -320,20 +349,34 @@
 
   <section class="featured" id="collections">
     <h2 class="section-title">The Masterpieces</h2>
-    <p class="section-desc">Rare Stones & Handcrafted Perfection</p>
+    <p class="section-desc">Rare Gemstones & Bespoke High Jewelry</p>
     
     <div class="grid">
       <div class="card">
-        <h3 class="card-title">L'Émeraude Royale Ring</h3>
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="L'Émeraude Royale Ring" class="card-img">
+        </div>
+        <h3 class="card-title">L'Émeraude Royale</h3>
+        <p class="card-description">5.2-Carat Unheated Colombian Emerald with Pavé Diamonds in Platinum</p>
         <p class="card-price">$52,000 USD</p>
       </div>
+
       <div class="card">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80" alt="Serpent D'Or Solitaire" class="card-img">
+        </div>
         <h3 class="card-title">Serpent D'Or Solitaire</h3>
+        <p class="card-description">3.5-Carat Flawless D-Color Oval Diamond Encircled by 18K Serpent Gold</p>
         <p class="card-price">$68,000 USD</p>
       </div>
+
       <div class="card">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Albino Viper Cuff" class="card-img">
+        </div>
         <h3 class="card-title">Albino Viper Cuff</h3>
         <p class="card-price">$95,000 USD</p>
+        <p class="card-description">Rare Australian Argyle Pink Diamond Scales Hand-Set in High Polished Platinum</p>
       </div>
     </div>
   </section>
@@ -345,30 +388,30 @@
         Experience Valmont Haute Joaillerie through a private, one-on-one viewing session with our master jewelers in Place Vendôme or via secure private digital showcase.
       </p>
 
-      <form class="booking-form" onsubmit="event.preventDefault(); alert('Your viewing request has been received by the Valmont Concierge.');">
+      <form class="booking-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
         <div class="form-group">
           <label>Full Name</label>
-          <input type="text" placeholder="Lord / Lady / Mr / Ms" required>
+          <input type="text" name="name" placeholder="Lord / Lady / Mr / Ms" required>
         </div>
         <div class="form-group">
           <label>Email Address</label>
-          <input type="email" placeholder="concierge@domain.com" required>
+          <input type="email" name="email" placeholder="manas65598@gmail.com" required>
         </div>
         <div class="form-group">
           <label>Preferred Consultation</label>
-          <select required>
-            <option value="vendome">Place Vendôme Atelier (Paris)</option>
-            <option value="digital">Private Virtual Salon</option>
-            <option value="residence">In-Residence Private Viewing</option>
+          <select name="consultation_type" required>
+            <option value="Place Vendôme Atelier (Paris)">Place Vendôme Atelier (Paris)</option>
+            <option value="Private Virtual Salon">Private Virtual Salon</option>
+            <option value="In-Residence Private Viewing">In-Residence Private Viewing</option>
           </select>
         </div>
         <div class="form-group">
           <label>Piece of Interest</label>
-          <input type="text" placeholder="e.g. Albino Viper Series ($50k+)">
+          <input type="text" name="piece_of_interest" placeholder="e.g. Albino Viper Series ($50k+)">
         </div>
         <div class="form-group full-width">
           <label>Customization Requirements / Notes</label>
-          <textarea rows="4" placeholder="Detail any specific gemological requests or bespoke commissioning requirements..."></textarea>
+          <textarea name="notes" rows="4" placeholder="Detail any specific gemological requests or bespoke commissioning requirements..."></textarea>
         </div>
         <button type="submit" class="cta-btn submit-btn">Request Private Appointment</button>
       </form>
